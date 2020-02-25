@@ -5,10 +5,8 @@ $dbhost    = "localhost";
 $dbuser    = "neil";
 $dbpass    = "neil";
 $db        = "becode";
-
 // Try to understand what happens here
 $pdo = new PDO('mysql:host='. $dbhost . ';dbname='. $db, $dbuser, $dbpass);
-var_dump($pdo);
 // Why we do this here
 return $pdo;
 }

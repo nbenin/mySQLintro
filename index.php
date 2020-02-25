@@ -1,6 +1,6 @@
 <?php
-require 'connection.php';
-echo phpinfo();
-echo openConnection();
+require 'Controller/HomepageController.php';
+require 'Model/connection.php';
 
-!  
+$controller = new HomepageController();
+$controller->render($_POST);
