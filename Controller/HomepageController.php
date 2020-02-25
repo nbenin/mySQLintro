@@ -19,12 +19,15 @@ class HomepageController {
                                 $post['github'], $post['email'], $post['language'], $post['avatar'],
                                 $post['video'], $post['quote'], $post['quoteAuthor']);
 
-            $statement = $statementGenerator->preparePDO($pdo);
+            $insertStatement = $statementGenerator->prepareInsertPDO($pdo);
 
-            $statement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(), $userInfo->getLinkedin(),
+            $insertStatement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(), $userInfo->getLinkedin(),
                                 $userInfo->getGithub(), $userInfo->getEmail(), $userInfo->getLang(), $userInfo->getAvatar(),
                                 $userInfo->getVideo(), $userInfo->getQuote(), $userInfo->getQuoteAuthor()]);
         }
+        $selectStatement = $statementGenerator->prepareSelectPDO($pdo);
+        $selectStatement->execute();
+
 
         // Load page
         require 'View/homepage.php';

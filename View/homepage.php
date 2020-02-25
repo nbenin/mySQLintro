@@ -9,5 +9,6 @@
 </head>
 <body>
 <?php require 'insert.php' ?>
+<?php require 'table.php' ?>
 </body>
 </html>
