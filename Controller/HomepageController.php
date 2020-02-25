@@ -13,17 +13,18 @@ class HomepageController {
         }
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
             $statementGenerator = new StatementGenerator();
             $userInfo = new Post($post['firstName'], $post['lastName'], $post['username'], $post['linkedin'],
                                 $post['github'], $post['email'], $post['language'], $post['avatar'],
                                 $post['video'], $post['quote'], $post['quoteAuthor']);
 
-            $sqlInsert = $statementGenerator->generateInsert($userInfo);
+            $statement = $statementGenerator->preparePDO($pdo);
+
+            $statement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(), $userInfo->getLinkedin(),
+                                $userInfo->getGithub(), $userInfo->getEmail(), $userInfo->getLang(), $userInfo->getAvatar(),
+                                $userInfo->getVideo(), $userInfo->getQuote(), $userInfo->getQuoteAuthor()]);
         }
-
-
-        $statement = $pdo->prepare("SELECT * FROM student")->execute($statement);
-        var_dump($statement);
 
         // Load page
         require 'View/homepage.php';

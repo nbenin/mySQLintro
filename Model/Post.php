@@ -18,17 +18,17 @@ class Post {
                                 string $github, string $email,string $lang, string $avatar, string $video,
                                 string $quote, string $quoteAuthor)
     {
-        $this->firstName = $firstName;
-        $this->lastName = $lastName;
-        $this->username = $username;
-        $this->linkedin = $linkedin;
-        $this->github = $github;
-        $this->email = $email;
-        $this->lang = $lang;
-        $this->avatar = $avatar;
-        $this->video = $video;
-        $this->quote = $quote;
-        $this->quoteAuthor = $quoteAuthor;
+        $this->firstName = htmlspecialchars($firstName);
+        $this->lastName = htmlspecialchars($lastName);
+        $this->username = htmlspecialchars($username);
+        $this->linkedin = htmlspecialchars($linkedin);
+        $this->github = htmlspecialchars($github);
+        $this->email = htmlspecialchars($email);
+        $this->lang = htmlspecialchars($lang);
+        $this->avatar = htmlspecialchars($avatar);
+        $this->video = htmlspecialchars($video);
+        $this->quote = htmlspecialchars($quote);
+        $this->quoteAuthor = htmlspecialchars($quoteAuthor);
     }
 
     // Getters
