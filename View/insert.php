@@ -18,7 +18,15 @@
     <input type="text" name="email" required><br>
 
     <label for="language">Preferred Language</label><br>
-    <input type="text" name="language" required><br>
+    <select name="language" required>
+        <option value="en">English</option>
+        <option value="fr">Français</option>
+        <option value="nl">Nederlands</option>
+        <option value="de">Deutsche</option>
+        <option value="es">Español</option>
+        <option value="ja">日本語</option>
+        <option value="ru">русский</option>
+    </select><br>
 
     <label for="avatar">Avatar</label><br>
     <input type="text" name="avatar" required><br>

@@ -10,7 +10,7 @@ class StatementGenerator {
     }
 
     public function prepareSelectPDO(object $pdo) : object {
-        $base = 'SELECT * FROM student';
-        return $pdo->$prepare($base);
+        $base = 'SELECT first_name, last_name, username, email, preferred_language, github FROM student';
+        return $pdo->query($base);
     }
 }
