@@ -40,5 +40,11 @@
     <label for="quoteAuthor">Quote Author</label><br>
     <input type="text" name="quoteAuthor" required><br>
 
+    <label for="gender">Gender</label><br>
+    <select name="gender">
+        <option value="m">Male</option>
+        <option value="f">Female</option>
+    </select>
+
     <button type="submit">Submit Form</button>
 </form>
