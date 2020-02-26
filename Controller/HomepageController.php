@@ -5,14 +5,7 @@ class HomepageController {
     public function render($post) {
 
         // Prepare statement generator
-        $statementGenerator = new StatementGenerator();
-        // Connect to database
-        $pdo = openConnection();
-        if ($pdo) {
-            echo 'Successfully Connected';
-        } else {
-            echo 'Connection Problem';
-        }
+        $statementHandler = new StatementHandler();
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -22,21 +15,26 @@ class HomepageController {
                                 $post['video'], $post['quote'], $post['quoteAuthor']);
 
             // Insert new post into database
-            $insertStatement = $statementGenerator->prepareInsertPDO($pdo);
+            $statementHandler->InsertPDO($userInfo);
 
-            $insertStatement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(), $userInfo->getLinkedin(),
-                                $userInfo->getGithub(), $userInfo->getEmail(), $userInfo->getLang(), $userInfo->getAvatar(),
-                                $userInfo->getVideo(), $userInfo->getQuote(), $userInfo->getQuoteAuthor()]);
         }
 
         // Select users from DB and append to table
-        $rowsArray = [];
-        $selectStatement = $statementGenerator->prepareSelectPDO($pdo);
-        while ($rows = $selectStatement->fetch()) {
-            array_push($rowsArray, $rows);
-        }
+        $rowsArray = $statementHandler->selectAllPDO();
 
         // Load page
         require 'View/homepage.php';
+    }
+
+    // Controller for Profile
+    public function renderProfile($get) {
+
+        // Prepare statement generator
+        $statementHandler = new StatementHandler();
+
+        // Get user ID
+        $chosenId = $_GET['user'];
+
+
     }
 }
