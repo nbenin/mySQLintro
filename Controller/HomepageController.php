@@ -12,6 +12,6 @@ class HomepageController {
         $rowsArray = $statementHandler->selectAllPDO();
 
         // Load page
-        require 'View/homepage.php';
+        require 'homepage.php';
     }
 }

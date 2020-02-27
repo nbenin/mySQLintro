@@ -5,6 +5,7 @@ require 'Controller/HomepageController.php';
 require 'Controller/LoginController.php';
 require 'Controller/ProfileController.php';
 require 'Controller/RegisterController.php';
+require 'Model/Validate.php';
 require 'Model/Post.php';
 require 'Model/StatementHandler.php';
 
@@ -24,12 +25,16 @@ if ($_SESSION['loggedIn'] == 'true' && isset($_GET['user'])) {
     $profileControl->renderProfile($_GET['user']);
 }
 else if($_SESSION['loggedIn'] == 'true'){
-    $homepageControl->renderHomepage($_SESSION['userId']);
+    $homepageControl->renderHomepage();
 }
 else if ($_GET['page'] == 'register') {
     $registerControl->renderRegister($_POST);
 }
 else {
-    $loginControl->renderLogin();
+/*    if (isset($_POST)) {
+        $loginControl->checkCredentials($_POST);
+    } else {*/
+        $loginControl->renderLogin();
+    //}
 }
 

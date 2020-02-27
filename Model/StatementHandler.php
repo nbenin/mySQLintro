@@ -38,4 +38,16 @@ class StatementHandler {
         return $selectUserStatement->fetch();
     }
 
+    public function selectUserEmail(string $email) : bool {
+        $prepareStatement = 'SELECT * FROM student WHERE email="' . $email . '"';
+        $selectUserStatement = $this->pdo->query($prepareStatement);
+
+        if($selectUserStatement === false) {
+            return false;
+        } else {
+            return true;
+        }
+
+    }
+
 }
