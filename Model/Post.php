@@ -13,10 +13,11 @@ class Post {
     private $video;
     private $quote;
     private $quoteAuthor;
+    private $gender;
 
     public function __construct(string $firstName, string $lastName, string $username, string $linkedin,
                                 string $github, string $email,string $lang, string $avatar, string $video,
-                                string $quote, string $quoteAuthor)
+                                string $quote, string $quoteAuthor, string $gender)
     {
         $this->firstName = htmlspecialchars($firstName);
         $this->lastName = htmlspecialchars($lastName);
@@ -26,9 +27,10 @@ class Post {
         $this->email = htmlspecialchars($email);
         $this->lang = htmlspecialchars($lang);
         $this->avatar = htmlspecialchars($avatar);
-        $this->video = htmlspecialchars($video);
+        $this->video = htmlspecialchars(str_replace('watch?v=', 'embed/', $video));
         $this->quote = htmlspecialchars($quote);
         $this->quoteAuthor = htmlspecialchars($quoteAuthor);
+        $this->gender = htmlspecialchars($gender);
     }
 
     // Getters
@@ -64,6 +66,9 @@ class Post {
     }
     public function getQuoteAuthor() : string {
         return $this->quoteAuthor;
+    }
+    public function getGender() : string {
+        return $this->gender;
     }
 
 }

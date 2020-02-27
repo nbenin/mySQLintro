@@ -14,7 +14,7 @@
         echo '<td>' . $row['last_name'] . '</td>';
         echo '<td>' . $row['username'] . '</td>';
         echo '<td>' . $row['email'] . '</td>';
-        echo '<td><a href="profile.php?user=' . $row['id'] . '">Link to Profile</a></td>';
+        echo '<td><a href="/?user=' . $row['id'] . '">Link to Profile</a></td>';
         echo '<td><img src="../Assets/Img/' . $row['preferred_language'] . '.svg"></td>';
         echo '</tr>';
     }
