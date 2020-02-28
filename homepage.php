@@ -8,6 +8,7 @@
     <title>MYSQL</title>
 </head>
 <body>
+<a href="logout.php">Logout</a>
 <?php require 'View/usertable.php' ?>
 </body>
 </html>

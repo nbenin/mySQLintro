@@ -6,21 +6,16 @@ class StatementHandler {
     private $pdo;
     public function __construct()
     {
-        // Connect to database
         $this->pdo = openConnection();
-        if ($this->pdo) {
-            echo 'Successfully Connected';
-        } else {
-            echo 'Connection Problem';
-        }
     }
 
     public function InsertPDO(object $userInfo) {
 
-        $insertStatement = $this->pdo->prepare('INSERT INTO student(first_name, last_name, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author, gender) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $insertStatement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(), $userInfo->getLinkedin(),
-            $userInfo->getGithub(), $userInfo->getEmail(), $userInfo->getLang(), $userInfo->getAvatar(),
-            $userInfo->getVideo(), $userInfo->getQuote(), $userInfo->getQuoteAuthor(), $userInfo->getGender()]);
+        $insertStatement = $this->pdo->prepare('INSERT INTO student(first_name, last_name, username, linkedin, github, email, preferred_language, avatar, video, quote, quote_author, gender, password) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
+        $insertStatement->execute([$userInfo->getFirstName(), $userInfo->getLastName(), $userInfo->getUsername(),
+            $userInfo->getLinkedin(), $userInfo->getGithub(), $userInfo->getEmail(), $userInfo->getLang(), $userInfo->getAvatar(),
+            $userInfo->getVideo(), $userInfo->getQuote(), $userInfo->getQuoteAuthor(), $userInfo->getGender(),
+            $userInfo->getPassword()]);
     }
 
     public function selectAllPDO() : array {
@@ -32,22 +27,23 @@ class StatementHandler {
         return $rowsArray;
     }
 
-    public function selectUser(string $chosenId) {
+    public function selectUserById(string $chosenId) : array {
         $prepareStatement = 'SELECT * FROM student WHERE id=' . $chosenId;
         $selectUserStatement = $this->pdo->query($prepareStatement);
         return $selectUserStatement->fetch();
     }
 
-    public function selectUserEmail(string $email) : bool {
+    public function selectUserByEmail(string $email) : array {
         $prepareStatement = 'SELECT * FROM student WHERE email="' . $email . '"';
-        $selectUserStatement = $this->pdo->query($prepareStatement);
+        $query = $this->pdo->query($prepareStatement);
+        $result = $query->fetch();
 
-        if($selectUserStatement === false) {
-            return false;
+        // will return empty array if no user with that email
+        if ($result == false) {
+            $result = [];
+            return $result;
         } else {
-            return true;
+            return $result;
         }
-
     }
-
 }

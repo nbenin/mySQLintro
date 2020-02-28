@@ -7,10 +7,19 @@ class LoginController {
         require 'login.php';
     }
 
-    public function checkCredentials($post) {
-        $email = $post['email'];
-        $password = $post['password'];
+    public function checkCredentials(array $post) {
 
+        $validator = new Validator();
+
+        $validity = $validator->validateLogin($post);
+
+        if ($validity == false) {
+            header('Location: http://mysqlintro.local');
+        } else {
+            $_SESSION['loggedIn'] = true;
+            $_SESSION['userId'] = $post['email'];
+            header('Location: http://mysqlintro.local');
+        }
 
     }
 }

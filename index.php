@@ -18,9 +18,7 @@ $loginControl = new LoginController();
 $profileControl = new ProfileController();
 $registerControl = new RegisterController();
 
-var_dump($_GET);
-var_dump($_POST);
-
+// routing
 if ($_SESSION['loggedIn'] == 'true' && isset($_GET['user'])) {
     $profileControl->renderProfile($_GET['user']);
 }
@@ -31,10 +29,10 @@ else if ($_GET['page'] == 'register') {
     $registerControl->renderRegister($_POST);
 }
 else {
-/*    if (isset($_POST)) {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $loginControl->checkCredentials($_POST);
-    } else {*/
+    } else {
         $loginControl->renderLogin();
-    //}
+    }
 }
 

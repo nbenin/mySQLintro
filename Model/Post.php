@@ -5,6 +5,7 @@ class Post {
     private $firstName;
     private $lastName;
     private $username;
+    private $password;
     private $linkedin;
     private $github;
     private $email;
@@ -15,13 +16,14 @@ class Post {
     private $quoteAuthor;
     private $gender;
 
-    public function __construct(string $firstName, string $lastName, string $username, string $linkedin,
+    public function __construct(string $firstName, string $lastName, string $username, string $password , string $linkedin,
                                 string $github, string $email,string $lang, string $avatar, string $video,
                                 string $quote, string $quoteAuthor, string $gender)
     {
         $this->firstName = htmlspecialchars($firstName);
         $this->lastName = htmlspecialchars($lastName);
         $this->username = htmlspecialchars($username);
+        $this->password = password_hash($password, PASSWORD_DEFAULT);
         $this->linkedin = htmlspecialchars($linkedin);
         $this->github = htmlspecialchars($github);
         $this->email = htmlspecialchars($email);
@@ -69,6 +71,9 @@ class Post {
     }
     public function getGender() : string {
         return $this->gender;
+    }
+    public function getPassword() : string {
+        return $this->password;
     }
 
 }

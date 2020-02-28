@@ -10,7 +10,7 @@ class ProfileController {
     $statementHandler = new StatementHandler();
 
     // Get user from table
-    $userData = $statementHandler->selectUser($chosenId);
+    $userData = $statementHandler->selectUserById($chosenId);
 
     require 'profile.php';
 
