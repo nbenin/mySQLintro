@@ -5,10 +5,10 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MYSQL</title>
+    <link rel="stylesheet" type="text/css" href="../Assets/Css/main.css">
+    <title>Document</title>
 </head>
 <body>
-<a href="logout.php">Logout</a>
-<?php require 'View/usertable.php' ?>
+<?php require 'View/Includes/registerForm.php' ?>
 </body>
 </html>

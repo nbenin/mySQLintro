@@ -9,6 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php require 'View/registerForm.php' ?>
+<?php require 'View/Includes/loginForm.php' ?>
+
 </body>
 </html>

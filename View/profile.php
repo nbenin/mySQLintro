@@ -8,6 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-<?php require 'View/profilepage.php'; ?>
+<?php require 'View/Includes/profilepage.php'; ?>
 </body>
 </html>
