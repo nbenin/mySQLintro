@@ -1,5 +1,4 @@
 # mySQLintro
 
 - intro to mySQL
-
-[Intro to MySQL](https://dev.mysql.com/)
+- Making databse connections using PDO
